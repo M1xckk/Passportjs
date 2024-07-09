@@ -1,0 +1,23 @@
+<h1>Admin Dashboard</h1>
+<p class="lead mb-3">Welcome Admin <%= user.name %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Session ID</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (let sessionId in sessions) { %>
+    <tr>
+      <td><%= sessionId %></td>
+      <td>
+        <form action="/admin/revoke" method="POST" style="display: inline">
+          <input type="hidden" name="sessionId" value="<%= sessionId %>" />
+          <button type="submit" class="btn btn-danger">Revoke Session</button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
